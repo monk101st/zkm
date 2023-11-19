@@ -1,7 +1,22 @@
 doctype html
+mixin menuitem(title, url)
+  li
+    a(href=url class=path == url ? 'active' : '')=title
 html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    Header
+      h1 ZKM - ORGANIZER
+      nav
+        ul 
+          +menuitem("Strona główna", '/')
+          +menuitem("Aktualności", '/news')
+          +menuitem("Quiz", '/quiz')
+          +menuitem("Admin", '/admin')
+    Div(class='content-container') 
+      block content
+    Footer 
+      p #{title}, ścieżka lokalna: #{path}
+      p Copyrights: ZKM
